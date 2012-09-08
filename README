@@ -1,0 +1,15 @@
+The standard authentication approach for web directories on an Apache server is
+to use .htaccess files to describe the permissions for a particular directory.
+Configuring these files correctly can be quite irritating and, in many
+scenarios, you simply want to re-use the system accounts for authentication.
+The scripts in this repository are designed to simply creating .htaccess files
+that reference the system accounts.
+
+generate-htgroups.sh - Run this to generate a .htgroups file that matches the
+    group setup of your system accounts.
+generate-htpasswd.sh - Run this to generate a .htpasswd file that amalgamates
+    the .htpasswd files from each user's home directory. This allows users to
+    set their own password that is then updated in the global .htpasswd.
+protect.py - Run this in a web directory to create a .htaccess file. Note that
+    this script assumes you have used the generate scripts to create the files
+    /var/www/.htgroups and /var/www/.htpasswd respectively.
